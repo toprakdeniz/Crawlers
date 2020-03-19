@@ -87,7 +87,7 @@ class OnedioCrawler:
         return user, title, date
 
     #this function is implicit. Takes string or string list(as it joins them into single string) clears them
-    def clear_unnecesser_characters(self, s):
+    def clear_necessary_characters(self, s):
         if isinstance(s , str):
             return re.sub("[^\w.]+", " ", s)
         if isinstance(s , list):
@@ -104,7 +104,7 @@ class OnedioCrawler:
                 content.append(paragraph.get_text())
             for p in section.find_all('p'):
                 content.append((p.get_text()))
-        return self.clear_unnecesser_characters(content)
+        return self.clear_necessary_characters(content)
 
     def page_count(self, bs):
         # With more then 1 pages "next" button added to the list so number must decreased by 1.
